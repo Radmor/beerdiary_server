@@ -1,7 +1,14 @@
-FROM python:3.5.2
+FROM python:3.5.3-alpine
 ENV PYTHONUNBUFFERED 1
-RUN apt-get update
-RUN pip install uwsgi
+RUN apk update
+RUN apk add --update \
+    python-dev \
+    build-base \
+    linux-headers \
+    pcre-dev \
+    postgresql-dev
+#    py-pip \
+RUN pip install https://github.com/unbit/uwsgi/archive/uwsgi-2.0.zip#egg=uwsgi
 
 RUN mkdir /code
 WORKDIR /code
