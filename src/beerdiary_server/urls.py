@@ -7,16 +7,34 @@ from rest_framework import routers
 
 import pubs.api
 import events.api
+import beers.api
+import breweries.api
+import styles.api
 
-router = routers.DefaultRouter()
+router = routers.DefaultRouter(trailing_slash=False)
 
+# pubs
 router.register(
     'pubs', pubs.api.PubViewSet, 'pubs',
 )
+# events
 router.register(
     'events', events.api.EventViewSet, 'events',
 )
-
+# beers
+router.register(
+    'beers', beers.api.BeerViewSet, 'beers',
+    
+)
+router.register(
+    'reviews', beers.api.BeerReviewViewSet, 'reviews',
+)
+router.register(
+    'breweries', breweries.api.BreweryViewSet, 'breweries',
+)
+router.register(
+    'styles', styles.api.StyleViewSet, 'styles',
+)
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include(router.urls)),
