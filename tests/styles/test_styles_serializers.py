@@ -39,7 +39,3 @@ class SerializerTest(TestCase):
     def test_proper_name(self):
         serializer = StyleSerializer(data=self.data_with_proper_name)
         serializer.is_valid(raise_exception=True)
-
-
-
-        

@@ -42,3 +42,4 @@ class APIFlowTest(TestCase):
         response = self.client.delete(reverse('styles-detail', args=(id,)))
         assert response.status_code == status.HTTP_204_NO_CONTENT
         assert not Style.objects.filter(id=id)
+        
