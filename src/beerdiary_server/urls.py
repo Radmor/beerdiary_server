@@ -10,6 +10,7 @@ import events.api
 import beers.api
 import breweries.api
 import styles.api
+import pub_visits.api
 
 router = routers.DefaultRouter(trailing_slash=False)
 
@@ -34,6 +35,9 @@ router.register(
 )
 router.register(
     'styles', styles.api.StyleViewSet, 'styles',
+)
+router.register(
+    'pub_visits', pub_visits.api.PubVisitViewSet, 'pub_visits'
 )
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),

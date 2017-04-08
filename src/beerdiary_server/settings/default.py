@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'beers',
     'breweries',
     'styles',
+    'pub_visits',
 
 )
 
