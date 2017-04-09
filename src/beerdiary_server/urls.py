@@ -39,6 +39,9 @@ router.register(
 router.register(
     'pub_visits', pub_visits.api.PubVisitViewSet, 'pub_visits'
 )
+router.register(
+    'pub_visits_beer_nested', pub_visits.api.PubVisitBeerNestedViewSet, 'pub_visits_beer_nested'
+)
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include(router.urls)),
