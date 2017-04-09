@@ -11,7 +11,7 @@ import beers.api
 import breweries.api
 import styles.api
 
-router = routers.DefaultRouter(trailing_slash=False)
+router = routers.DefaultRouter()
 
 # pubs
 router.register(
