@@ -3,7 +3,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 from rest_framework import routers
-from .views import FacebookLogin
+from .views import FacebookLogin, GoogleLogin
 
 import pubs.api
 import events.api
@@ -42,6 +42,7 @@ urlpatterns = [
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
     url(r'^rest-auth/facebook/$', FacebookLogin.as_view(), name='fb_login'),
+    url(r'^rest-auth/google/$', GoogleLogin.as_view(), name='google_login'),
 ]
 
 if 'rosetta' in settings.INSTALLED_APPS:
