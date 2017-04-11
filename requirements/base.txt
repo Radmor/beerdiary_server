@@ -16,3 +16,5 @@ Sphinx
 sphinx-rtd-theme
 django-environ
 djangorestframework
+django-rest-auth
+django-allauth

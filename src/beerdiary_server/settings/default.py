@@ -34,9 +34,17 @@ INSTALLED_APPS = (
     # 'stdimage',
     # 'sendfile',
     'debug_toolbar',
-    'registration',
+    # 'registration',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_auth',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
+
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.twitter',
 
     'beerdiary_server',
     'auth_ex',
@@ -198,3 +206,11 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAdminUser'
     )
 }
+
+
+# allauth
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
