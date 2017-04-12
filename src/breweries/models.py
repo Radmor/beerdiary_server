@@ -9,6 +9,9 @@ class Brewery(models.Model):
     overall = RatingField(_('overall'), blank=True, null=True)
     note = models.TextField(_('note'), blank=True)
 
+    def __str__(self):
+        return self.name
+        
     class Meta:
         verbose_name = _('brewery')
         verbose_name_plural = _('breweries')
