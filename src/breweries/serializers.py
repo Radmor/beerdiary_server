@@ -4,6 +4,7 @@ from .models import Brewery
 
 
 class BrewerySerializer(serializers.ModelSerializer):
+    id = serializers.ReadOnlyField()
     class Meta:
         model = Brewery
-        fields = ('name', 'overall', 'note')
+        fields = ('id', 'name', 'overall', 'note')
