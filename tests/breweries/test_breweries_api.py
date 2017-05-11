@@ -19,8 +19,23 @@ class APITest(TestCase):
         self.valid_data_response = {
             'name':'name',
             'overall': None,
-            'note': None
+            'note': ''
         }
+
+        self.with_same_name1 = {
+            "name": "name1",
+            "overall": "1",
+        }
+
+        self.with_same_name2 = {
+            "name": "name1",
+            "overall": "2",
+        }
+
+    def getDataWithID(self, data, id):
+        data.update({"id":id})
+        return data
+
     def create_brewery(self):
         self.client.post(reverse('breweries-list'), data=self.valid_data)
         return Brewery.objects.get(name='name').id
@@ -31,16 +46,18 @@ class APITest(TestCase):
         assert Brewery.objects.filter(name='name')
 
     def test_get_list(self):
-        self.create_brewery()
+        id = self.create_brewery()
         response = self.client.get(reverse('breweries-list'))
         assert response.status_code == status.HTTP_200_OK
-        assert response.data == [self.valid_data_response]
+        valid_data_response = self.getDataWithID(self.valid_data_response, id)
+        assert response.data == [dict(valid_data_response)]
 
     def test_get_detail(self):
         brewery_id = self.create_brewery()
         response = self.client.get(reverse('breweries-detail',args=(brewery_id,)))
         assert response.status_code == status.HTTP_200_OK
-        assert response.data == self.valid_data_response
+        valid_data_response = self.getDataWithID(self.valid_data_response, brewery_id)
+        assert response.data == valid_data_response
 
     def test_delete(self):
         brewery_id = self.create_brewery()

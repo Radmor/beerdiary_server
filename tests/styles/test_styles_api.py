@@ -20,22 +20,31 @@ class APIFlowTest(TestCase):
         self.user = get_user_model().objects.create(email='test@test.com')
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
+
+
+    def getDataWithID(self, id):
+        data = self.data
+        data.update({"id":id})
+        return data
+
     def test_post(self):
         response = self.client.post(reverse('styles-list'), self.data)
         assert response.status_code == status.HTTP_201_CREATED
         assert Style.objects.filter(name="name")
 
     def test_get_list(self):
-        self.create_style()
+        id = self.create_style()
         response = self.client.get(reverse('styles-list'))
         assert response.status_code == status.HTTP_200_OK
-        assert response.data == [self.data]
+        response_detail_data = self.getDataWithID(id)
+        assert response.data == [dict(response_detail_data)]
 
     def test_get_detail(self):
         id = self.create_style()
         response = self.client.get(reverse('styles-detail', args=(id,)))
         assert response.status_code == status.HTTP_200_OK
-        assert response.data == self.data
+        response_data = self.getDataWithID(id)
+        assert response.data == response_data
 
     def test_delete(self):
         id = self.create_style()
