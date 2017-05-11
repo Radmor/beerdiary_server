@@ -11,7 +11,7 @@ from styles.models import Style
 from styles.serializers import StyleSerializer
 
 
-class SerializerTest(TestCase):
+class StylesSerializerTest(TestCase):
     def setUp(self):
         self.empty_data = {
         }
