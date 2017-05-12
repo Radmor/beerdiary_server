@@ -9,7 +9,12 @@ https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
 
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE",
-                      "src.beerdiary_server.settings")
+                      "beerdiary_server.settings")
+
+import sys
+
+sys.path.append('..')
+
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
