@@ -13,7 +13,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE",
 
 import sys
 
-sys.path.append('..')
+sys.path.append('/code/src')
 
 
 from django.core.wsgi import get_wsgi_application
