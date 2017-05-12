@@ -10,7 +10,7 @@ def getHostname(String domain, String project, String branch_name=null) {
 env.NORMALIZED_BRANCH_NAME = env.BRANCH_NAME.replaceAll('/', '--');
 env.DEFAULT_BRANCH = 'master'
 env.PROJECT_NAME = 'beerdiary_server'
-env.REGISTRY_URL = 'localhost:5000'
+env.REPOSITORY_URL = 'localhost:5000'
 env.DOMAIN = 'ci.devmerix.com'
 env.COMPOSE_ENV_FILE = '.env.jenkins'
 
