@@ -11,10 +11,5 @@ import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE",
                       "beerdiary_server.settings")
 
-import sys
-
-sys.path.append('/code/src')
-
-
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
