@@ -1,6 +1,15 @@
 @Library('shared')
 import gd.mrx.ci.DockerStack
 
+def getHostname(String domain, String project, String branch_name=null) { 
+        elements = [project, domain] 
+        if (branch_name) { 
+            elements.add(0, branch_name); 
+        } 
+        return elements.join('.') 
+    } 
+
+
 node {
     stage('Checkout') {
         checkout scm
@@ -10,14 +19,6 @@ node {
     stack.execute()
 
     stage('Test'){
-
-    def getHostname(String domain, String project, String branch_name=null) { 
-        elements = [project, domain] 
-        if (branch_name) { 
-            elements.add(0, branch_name); 
-        } 
-        return elements.join('.') 
-    } 
 
     env.NORMALIZED_BRANCH_NAME = env.BRANCH_NAME.replaceAll('/', '--'); 
     env.DEFAULT_BRANCH = 'master' 
