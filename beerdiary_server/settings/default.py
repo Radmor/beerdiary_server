@@ -2,7 +2,7 @@ from os import path
 from django.utils.translation import ugettext_lazy as _
 import environ
 
-root = environ.Path(__file__) - 4
+root = environ.Path(__file__) - 3
 env = environ.Env(DEBUG=(bool, False), )
 environ.Env.read_env(env_file=root('.env'))
 BASE_DIR = root()
