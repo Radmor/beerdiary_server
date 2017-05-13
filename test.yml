@@ -1,0 +1,21 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    image: ${REPOSITORY_URL}/django:${BUILD_NUMBER}
+    environment:
+      ALLOWED_HOSTS: ${DEPLOY_HOSTNAME}
+    env_file: ${COMPOSE_ENV_FILE}
+    command: python manage.py pytest
+    volumes:
+      - static:/static
+      - media:/media
+    depends_on:
+      - postgres
+    networks:
+      - default
+      

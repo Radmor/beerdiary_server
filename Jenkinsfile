@@ -8,4 +8,8 @@ node {
 
     def stack = new gd.mrx.ci.DockerStack(this, 'beerdiary_server')
     stack.execute()
+
+    stage('Test'){
+        sh 'docker-compose -f test.yml build'
+    }
 }
